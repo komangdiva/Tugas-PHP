@@ -94,3 +94,18 @@ if (!empty($_FILES['foto']['name'])) {
         $fotoPath = UPLOAD_PATH . '/' . $newName;
     }
 }
+
+$result = $mhs->update((int)$id, [
+    'nama'      => $nama,
+    'nim'       => $nim,
+    'prodi'     => $prodi,
+    'angkatan'  => (int)$angkatan,
+    'foto_path' => $fotoPath,
+    'status'    => $status,
+]);
+
+if ($result) {
+    Utility::redirect('members.php', 'Data mahasiswa berhasil diupdate.');
+} else {
+    Utility::redirect('edit.php?id=' . $id, 'Gagal mengupdate data mahasiswa.');
+}
