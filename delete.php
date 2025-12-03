@@ -25,3 +25,11 @@ if (!empty($lama['foto_path'])) {
         @unlink($filePath);
     }
 }
+
+$result = $mhs->delete((int)$id);
+
+if ($result) {
+    Utility::redirect('members.php', 'Data mahasiswa berhasil dihapus.');
+} else {
+    Utility::redirect('members.php', 'Gagal menghapus data mahasiswa.');
+}
