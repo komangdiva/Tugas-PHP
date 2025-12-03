@@ -21,4 +21,16 @@
             }
             return $this->conn;
         }
+
+         public function disconnect() {
+        $this->conn = null;
+        }
+
+         public function query(string $sql, array $params = []) {
+            $stmt = $this->conn->prepare($sql);
+            if ($stmt->execute($params)){
+                return $stmt;
+            }
+            return false;
+         }
     }
