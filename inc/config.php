@@ -14,6 +14,9 @@
     const DB_PASS = '';
     const DB_NAME = 'tugas_php';
 
+    const UPLOAD_DIR = __DIR__ . '/../uploads';
+    const UPLOAD_PATH = 'uploads';
+
     const BASE_URL = 'http://localhost:8000/';
 
     const NAV_PAGES = [
