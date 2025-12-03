@@ -26,4 +26,30 @@
             header('Location: ' . BASE_URL . $url);
             exit;
         }
+
+         public static function showFlash() {
+            if (isset($_SESSION['flash']['message'])) {
+            echo '<div style="padding:8px;border:1px solid #ccc;margin-bottom:10px;background:#eef;">'
+                . htmlspecialchars($_SESSION['flash']['message']) .
+                '</div>';
+
+            unset($_SESSION['flash']);
+            }
+        }
+
+        public static function getPrefill($keys) {
+            $data = [];
+
+            foreach ($keys as $k) {
+                $data[$k] = $_SESSION['prefill'][$k] ?? '';
+            }
+
+            return $data;
+        }
+
+        public static function clearPrefill() {
+            if (isset($_SESSION['prefill'])) {
+                unset($_SESSION['prefill']);
+            }
+        }
     }
