@@ -32,7 +32,7 @@ Dengan atribut:
 - **Driver**: PDO
 
 ### Struktur Folder (Ringkas)
-
+```text
 tugasPhp/
 │ index.php
 │ members.php
@@ -55,7 +55,7 @@ tugasPhp/
 │
 └── uploads/
 └── .gitkeep
-
+```
 
 ### Penjelasan Class Utama
 #### 1. **Database.php**
