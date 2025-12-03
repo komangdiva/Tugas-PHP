@@ -17,4 +17,31 @@ $prefill = [
     'prodi'    => $prodi,
     'angkatan' => $angkatan,
     'status'   => $status,
-];
+    ];
+
+$errors = [];
+    if ($nama === '') {
+        $errors[] = 'Nama wajib diisi.';
+    }
+
+    if ($nim === '') {
+        $errors[] = 'NIM wajib diisi.';
+    }
+
+    $allowedProdi = ['SI','TI','MI','DKV'];
+    if (!in_array($prodi, $allowedProdi, true)) {
+        $errors[] = 'Prodi tidak valid.';
+    }
+
+    if (!ctype_digit((string)$angkatan) || (int)$angkatan < 2000) {
+        $errors[] = 'Angkatan tidak valid.';
+    }
+
+    $allowedStatus = ['aktif', 'tidak_aktif'];
+    if (!in_array($status, $allowedStatus, true)) {
+        $errors[] = 'Status tidak valid.';
+    }
+
+    if (!empty($errors)) {
+        Utility::redirect('create.php', implode(' | ', $errors), $prefill);
+    }
