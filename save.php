@@ -80,3 +80,21 @@ if (!empty($_FILES['foto']['name'])) {
         $fotoPath = UPLOAD_PATH . '/' . $newName;
     }
 }
+
+$m = new Mahasiswa();
+
+$result = $m->insert([
+    'nama'      => $nama,
+    'nim'       => $nim,
+    'prodi'     => $prodi,
+    'angkatan'  => (int)$angkatan,
+    'foto_path' => $fotoPath,
+    'status'    => $status,
+    ]);
+
+    if ($result) {
+        Utility::clearPrefill();
+        Utility::redirect('members.php', 'Data mahasiswa berhasil ditambahkan.');
+    } else {
+        Utility::redirect('create.php', 'Gagal menyimpan data mahasiswa.', $prefill);
+    }
