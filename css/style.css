@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+nav ul {
+    background: #333;
+    padding: 10px;
+    display: flex;
+    gap: 12px;
+    list-style: none;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background: #eee;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: 6px 12px;
+    background: #2c7;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn-danger {
+    background: #e44;
+}
+
+input, select {
+    padding: 6px;
+    width: 100%;
+    margin-bottom: 10px;
+}
