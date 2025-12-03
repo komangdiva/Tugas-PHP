@@ -51,3 +51,46 @@ if (!in_array($status, $allowedStatus, true)) {
 if (!empty($errors)) {
     Utility::redirect('edit.php?id=' . $id, implode(' | ', $errors));
 }
+
+$fotoPath = $lama['foto_path']; 
+
+if (!empty($_FILES['foto']['name'])) {
+    $file = $_FILES['foto'];
+
+    if ($file['error'] !== UPLOAD_ERR_OK) {
+        $errors[] = 'Terjadi kesalahan saat upload file.';
+    } else {
+        $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        if (!in_array($file['type'], $allowedTypes, true)) {
+            $errors[] = 'Tipe file harus JPG, PNG, atau WebP.';
+        }
+
+        if ($file['size'] > 2 * 1024 * 1024) {
+            $errors[] = 'Ukuran file maksimal 2MB.';
+        }
+    }
+
+    if (!empty($errors)) {
+        Utility::redirect('edit.php?id=' . $id, implode(' | ', $errors));
+    }
+
+    if (!is_dir(UPLOAD_DIR)) {
+        mkdir(UPLOAD_DIR, 0777, true);
+    }
+
+    $ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $newName = time() . '_' . bin2hex(random_bytes(5)) . '.' . $ext;
+    $dest = UPLOAD_DIR . '/' . $newName;
+
+    if (move_uploaded_file($file['tmp_name'], $dest)) {
+        // hapus foto lama kalau ada
+        if (!empty($lama['foto_path'])) {
+            $oldFile = __DIR__ . '/' . $lama['foto_path'];
+            if (file_exists($oldFile)) {
+                @unlink($oldFile);
+            }
+        }
+
+        $fotoPath = UPLOAD_PATH . '/' . $newName;
+    }
+}
