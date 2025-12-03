@@ -12,6 +12,8 @@
     </head>
 
     <body>
+        <?php Utility::showNav(); ?>
+        
         <h2>Tambah Mahasiswa</h2>
 
         <?php Utility::showFlash(); ?>
