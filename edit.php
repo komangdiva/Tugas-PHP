@@ -26,6 +26,8 @@ if (!$row) {
 
         <h2>Edit Mahasiswa</h2>
 
+        
+
         <form action="update.php" method="post" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
 
