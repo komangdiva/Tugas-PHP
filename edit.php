@@ -56,6 +56,16 @@ if (!$row) {
                 <option value="tidak_aktif" <?php echo ($row['status'] === 'tidak_aktif') ? 'selected' : ''; ?>>Tidak Aktif</option>
             </select>
 
+            <label>Foto Saat Ini</label><br>
+            <?php if (!empty($row['foto_path'])): ?>
+                <img src="<?php echo htmlspecialchars($row['foto_path']); ?>" alt="foto" style="width:80px;height:auto;"><br>
+            <?php else: ?>
+                <span>Belum ada foto</span><br>
+            <?php endif; ?>
+
+            <label>Ganti Foto</label>
+            <input type="file" name="foto" accept="image/*">
+
             <button type="submit" class="btn">Update</button>
         </form>
     </body>
