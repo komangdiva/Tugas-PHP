@@ -1,3 +1,9 @@
+<?php
+    require_once __DIR__ . '/inc/config.php';
+
+    $mhs = new Mahasiswa();
+    $data = $mhs->getAll();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,7 +13,11 @@
     </head>
 <body>
 
+<?php Utility::showNav(); ?>
+
 <h2>Daftar Mahasiswa</h2>
+
+<?php Utility::showFlash(); ?>
 
 <table>
     <thead>
