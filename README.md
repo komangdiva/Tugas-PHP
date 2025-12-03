@@ -104,13 +104,13 @@ CREATE TABLE mahasiswa (
 ### 3.2 Atur Konfigurasi Koneksi Database
 Edit file:
 inc/config.php
-
+```php
 Ubah sesuai environment:
 const DB_HOST = 'localhost';
 const DB_USER = 'root';
 const DB_PASS = '';
 const DB_NAME = 'tugas_php';
-
+```
 ### 3.3 Menjalankan Aplikasi
 Jalankan server PHP di folder project:
 php -S localhost:8000
